@@ -3,16 +3,24 @@ package tictactoe;
 import java.io.*;
 
 public class TicTacToe {
-	public int SpielerA;
-	public int SpielerB;
-	public static int n;
+	private static int spieler;
+	public final int n;
+	private int[][] spielfeld;
 
-	int[][] spielfeld = new int[n][n];
 
+	public TicTacToe(int n){
+		spieler=1;
+		this.n=n;
+	}
 	public static void main(String[] args) throws NumberFormatException, IOException {
+		int n;
+		int[][] spielfeld;
 		BufferedReader size = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Enter size of game pattern");
 		n = Integer.parseInt(size.readLine());
+		spielfeld = new int[n][n];
+		TicTacToe game= new TicTacToe(n);
+
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Enter x coordinate of the next turn");
@@ -20,6 +28,10 @@ public class TicTacToe {
 		System.out.println("Enter y coordinate of the next turn");
 		int y = Integer.parseInt(br.readLine());
 		
+		while(!game.checkWin(spieler)||!game.tie(spielfeld)tie){
+			//to do spiel
+			
+		}
 
 	}
 
@@ -92,5 +104,15 @@ public class TicTacToe {
 		}
 		return check;
 	}
-
+	
+	private boolean tie(int[][] spielfeld){
+		for(int i=0; i<n; i++){
+			for(int j=1; j<n; j++){
+				if(spielfeld[i][j]==0){
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 }
